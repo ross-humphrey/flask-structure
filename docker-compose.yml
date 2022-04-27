@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+
+  webapi:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - 5001:5000
+    environment:
+      - FLASK_ENV=development
+      - APP_SETTINGS=project.config.DevelopmentConfig
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=postgres
+#    depends_on:
+#      - postgres
