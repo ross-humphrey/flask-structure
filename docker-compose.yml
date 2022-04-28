@@ -8,6 +8,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 5001:5000
+    depends_on:
+      - postgres
     environment:
       - FLASK_ENV=development
       - APP_SETTINGS=project.config.DevelopmentConfig

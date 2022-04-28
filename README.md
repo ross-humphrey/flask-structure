@@ -26,6 +26,30 @@ docker tag <TAG_ID> ghcr.io/<USER_NAME>/<IMAGE_NAME>:latest
 docker push ghcr.io/<USER_NAME>/<IMAGE_NAME>:latest
 
 https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+# Create the volume 
+kubectl apply -f ./kubernetes/persistent-volume.yml
+# View details of volume
+kubectl get pv
+
+# Create the volume chain
+kubectl apply -f ./kubernetes/persistent-volume-claim.yml
+
+# Add Secrets object - secrets are based 64 obfuscated - echo -n "pleasechangeme" | base64 AND echo -n "sample" | base64
+
+kubectl apply -f ./kubernetes/secret.yml
+
+# Create the Postgres Deployment
+kubectl create -f ./kubernetes/postgres-deployment.yml
+# View deployments
+kubectl get deployments
+# Create Postgres service 
+kubectl create -f ./kubernetes/postgres-service.yml
+# Get Pod Names
+kubectl get pods
+# Create the database using the pod name
+kubectl exec postgres-775dcb5b64-q58rq --stdin --tty -- createdb -U sample books
+# Verify
+kubectl exec postgres-775dcb5b64-q58rq --stdin --tty -- psql -U sample
 
 ## Kubernetes Deploy
 # Create Flask Deployment
@@ -40,3 +64,7 @@ sudo echo "$(minikube ip) hello.structure" | sudo tee -a /etc/hosts
 # ON MAC: Create tunnel
 'docker port minikube | grep 22' to get the API_SERVER_SSH_PORT
 
+# TODO: 
+- Add prometheus 
+- Add grafana 
+- Create full deploy script (To kubernetes control plane) - (Compatible with EKS )
