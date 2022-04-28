@@ -25,3 +25,4 @@ docker images
 docker tag <TAG_ID> ghcr.io/<USER_NAME>/<IMAGE_NAME>:latest
 docker push ghcr.io/<USER_NAME>/<IMAGE_NAME>:latest
 
+https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
