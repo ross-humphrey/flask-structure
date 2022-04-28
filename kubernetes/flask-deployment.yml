@@ -23,7 +23,7 @@ spec:
           value: development
         - name: APP_SETTINGS
           value: project.config.DevelopmentConfig
-        image: mjhea0/flask-kubernetes:latest
+        image: ghcr.io/<DOCKER_REPO>/flask-structure:latest
         imagePullPolicy: Always
         name: flask
         resources: {}
