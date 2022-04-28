@@ -26,3 +26,17 @@ docker tag <TAG_ID> ghcr.io/<USER_NAME>/<IMAGE_NAME>:latest
 docker push ghcr.io/<USER_NAME>/<IMAGE_NAME>:latest
 
 https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+
+## Kubernetes Deploy
+# Create Flask Deployment
+kubectl create -f ./kubernetes/flask-deployment.yml
+# Create service
+kubectl create -f ./kubernetes/flask-service.yml
+# Create the ingress object:
+kubectl apply -f ./kubernetes/minikube-ingress.yml
+
+# Update hosts file to route requests from host defined, hello.world to Minikube instance
+sudo echo "$(minikube ip) hello.structure" | sudo tee -a /etc/hosts
+# ON MAC: Create tunnel
+'docker port minikube | grep 22' to get the API_SERVER_SSH_PORT
+
