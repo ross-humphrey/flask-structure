@@ -1,17 +1,18 @@
 # Import flask dependencies
 from flask import Blueprint, request, render_template, \
-                  flash, g, session, redirect, url_for
+                  flash, session, redirect, url_for
 
 # Import password / encryption helper tools
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import check_password_hash
 
 # Import the database object from the main services module
 
 # Import module forms
-from mod_auth.forms import LoginForm
 
 
 # Define the blueprint: 'auth', set its url prefix: services.url/auth
+from project.api.forms import LoginForm
+
 mod_auth = Blueprint('auth', __name__, url_prefix='/auth')
 
 # Set the route and accepted methods

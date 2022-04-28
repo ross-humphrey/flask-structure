@@ -27,10 +27,10 @@ def create_app():
         return render_template('404.html'), 404
 
     # Import a module / component using its blueprint handler variable (mod_auth)
-    from mod_auth.controllers import mod_auth as auth_module
 
     # Register blueprint(s)
-    app.register_blueprint(auth_module)
+    from project.api.controllers import mod_auth
+    app.register_blueprint(mod_auth)
     # services.register_blueprint(xyz_module)
 # ..
 

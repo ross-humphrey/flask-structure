@@ -1,6 +1,6 @@
 # Import the database object (db) from the main application module
 # We will define this inside /services/__init__.py in the next sections.
-from ..createapp import db
+from mod_auth.project import db
 
 
 # Define a base model for other database tables to inherit

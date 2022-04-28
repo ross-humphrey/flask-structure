@@ -4,7 +4,7 @@ services:
 
   webapi:
     build:
-      context: services
+      context: mod_auth
       dockerfile: Dockerfile
     ports:
       - 5001:5000
