@@ -9,3 +9,11 @@ The example also contains container definitions for a flask application.
 
 ## To Run in Docker
 - docker-compose up -d --build_
+
+## Publish to Github Container Repository - GHCR
+Instructions here:
+https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+
+1. Create security access token - https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
+2. export CR_PAT=YOUR_TOKEN
+3. echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin

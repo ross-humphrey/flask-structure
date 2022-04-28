@@ -7,18 +7,18 @@ RUN apt-get update && \
     apt-get clean
 
 # set working directory
-WORKDIR /usr/src/app
+WORKDIR /usr/src/services
 
 # add and install requirements
-COPY ./requirements.txt /usr/src/app/requirements.txt
+COPY ./requirements.txt /usr/src/services/requirements.txt
 RUN pip install -r requirements.txt
 
 # add entrypoint.sh
-COPY ../entrypoint.sh /usr/src/app/entrypoint.sh
-RUN chmod +x /usr/src/app/entrypoint.sh
+COPY ./entrypoint.sh /usr/src/entrypoint.sh
+RUN chmod +x /usr/src/entrypoint.sh
 
-# add app
-COPY mod_auth /usr/src/app
+# add services
+COPY . /usr/src/services
 
 # run server
-CMD ["/usr/src/app/entrypoint.sh"]
+CMD ["/usr/src/entrypoint.sh"]

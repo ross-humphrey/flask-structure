@@ -1,7 +1,7 @@
 from flask.cli import FlaskGroup
 from flask_sqlalchemy import SQLAlchemy
 
-from app import app
+from createapp import app
 
 cli = FlaskGroup(create_app=app)
 # Define the database object which is imported
