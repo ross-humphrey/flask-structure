@@ -17,3 +17,11 @@ https://docs.github.com/en/packages/working-with-a-github-packages-registry/work
 1. Create security access token - https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
 2. export CR_PAT=YOUR_TOKEN
 3. echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
+
+# Tag and publish images to Github packages
+## Get images
+docker images
+## Get the image name to tag and tag with the repo
+docker tag <TAG_ID> ghcr.io/<USER_NAME>/<IMAGE_NAME>:latest
+docker push ghcr.io/<USER_NAME>/<IMAGE_NAME>:latest
+
